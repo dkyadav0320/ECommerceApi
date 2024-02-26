@@ -1,7 +1,7 @@
 const router= require('express').Router();
 const Product= require('../package/Product');
 
-//To Create the products
+//To Create the products for the user
 router.post('/create/new', async(req,res) => {
     const newProduct= newProduct(req,res);
     try{
@@ -12,7 +12,7 @@ router.post('/create/new', async(req,res) => {
     }
 });
 
-//Search Api to get the products
+//Search Api to get the products for the user
 router.get("/", async(req,res) => {
     const qNew=req.query.new;
     const qCategory=req.query.category;
