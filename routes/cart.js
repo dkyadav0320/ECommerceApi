@@ -1,7 +1,7 @@
 const router= require('express').Router();
 const Cart= require('../package/Cart');
 
-//To get the cart items
+//To get the cart items for the user
 router.get("/cart", async(req,res) => {
     const user= req.user._id;
     try{
@@ -16,7 +16,7 @@ router.get("/cart", async(req,res) => {
     }
 });
 
-// Add items in the cart 
+// Add items in the cart for the user 
 router.post("/cart", async(req,res) => {
     const user= req.user._id;
     const{itemId, quantity}= res.body;
@@ -34,7 +34,7 @@ router.post("/cart", async(req,res) => {
         if(cart) {
             const itemIndex=cart.directModifiedPaths.findIndex((item) => item.itemId == itemId);
 
-            //heck whether product is exists or not
+            //check whether product is exists or not
             if(itemIndex >-1){
                 let product= cart.items[itemIndex];
                 product.quantity +=quantity;
@@ -54,7 +54,7 @@ router.post("/cart", async(req,res) => {
                 }
         } else {
 
-            //If no cart exists, create one 
+            //If no cart exists for the user, create one 
             const newCart= await Cart.create({
                 user,
                 items:[{itemId, iName, quanity, iPrice}],
