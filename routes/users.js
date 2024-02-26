@@ -2,7 +2,7 @@ const router= require ('express').Router();
 const User= require('../package/User');
 const bcrypt=require("bcrypt")
 
-//Profile updation
+//Profile updation for the logged in user
 router.put('/:id', async(req,res) => {
 if(req.body.userId== req.params.id){
     if(req.body.password){
