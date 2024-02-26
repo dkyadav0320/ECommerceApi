@@ -32,7 +32,7 @@ router.post('/order/checkout', Auth, async(req, res) => {
         let payload = req.body
         
 
-        //To find Cart and User 
+        //To find Cart and User before placing the order
         let cart = await Cart.findOne({owner})
         let user = req.user
         if(cart) {
