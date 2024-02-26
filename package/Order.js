@@ -4,11 +4,11 @@ const OrderSchema= new mongoose.Schema(
         userId: {type: String, required: true},
         products:[
             {
-                productId:{
-                    type: String
+                        productId:{
+                            type:String
                 },
-            quantity: {
-                type: Number,
+                quantity: {
+                    type:Number,
             default:1,
         },
     },
@@ -17,6 +17,6 @@ const OrderSchema= new mongoose.Schema(
         address: {type:Object, required: true},
         status:{type:String, default:"Pending"},
     },
-    {timestamps:true} 
+            {timestamps:true} 
 );
 module.exports= mongoose.model("Order", OrderSchema);
